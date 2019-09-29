@@ -29,9 +29,11 @@ public class Alert {
     private boolean isAcknowledged;
     private Date timeAlerted;
     private Date timeAcknowledged;
-    private Set<Application> applications;
+    @NotNull
+    @NotBlank
+    private Set<String> appIds;
 
-    public Alert(String originator, String message, String priority, Set<Application> applications) {
+    public Alert(String originator, String message, String priority, Set<String> appIds) {
         this.alertId = java.util.UUID.randomUUID().toString();
         this.originator = originator;
         this.message = message;
@@ -39,7 +41,7 @@ public class Alert {
         this.howActionable = 5;
         this.isAcknowledged = false;
         this.timeAlerted = new java.util.Date();
-        this.applications = applications;
+        this.appIds = appIds;
     }
 
     public String getAlertId() {
@@ -78,7 +80,7 @@ public class Alert {
         return timeAcknowledged;
     }
 
-    public Set<Application> getApplications() {
-        return applications;
+    public Set<String> getAppIds() {
+        return appIds;
     }
 }

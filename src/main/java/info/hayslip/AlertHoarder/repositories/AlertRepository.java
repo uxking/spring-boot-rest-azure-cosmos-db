@@ -5,6 +5,7 @@ import info.hayslip.AlertHoarder.models.Alert;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AlertRepository extends DocumentDbRepository<Alert, Integer> {
+public interface AlertRepository extends DocumentDbRepository<Alert, String> {
     /* should be the <Entity, Id> values that DocumentDbRepository<x,y> needs */
+
 }

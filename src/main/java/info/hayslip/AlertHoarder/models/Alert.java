@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Range;
 import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Set;
@@ -30,9 +31,10 @@ public class Alert {
     private Date timeAlerted;
     private Date timeAcknowledged;
     @NotNull
-    @NotBlank
+    @NotEmpty
     private Set<String> appIds;
 
+    /*
     public Alert(String originator, String message, String priority, Set<String> appIds) {
         this.alertId = java.util.UUID.randomUUID().toString();
         this.originator = originator;
@@ -42,6 +44,18 @@ public class Alert {
         this.isAcknowledged = false;
         this.timeAlerted = new java.util.Date();
         this.appIds = appIds;
+    }
+    */
+
+    public Alert(@NotNull @NotBlank String originator, @NotNull @NotBlank String message, @NotNull @NotBlank String priority, @NotNull @NotEmpty Set<String> appIds) {
+        this.alertId = java.util.UUID.randomUUID().toString();
+        this.originator = originator;
+        this.message = message;
+        this.priority = priority;
+        this.appIds = appIds;
+        this.howActionable = 5;
+        this.isAcknowledged = false;
+        this.timeAlerted = new java.util.Date();
     }
 
     public String getAlertId() {

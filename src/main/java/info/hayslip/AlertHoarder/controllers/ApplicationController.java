@@ -20,7 +20,7 @@ public class ApplicationController {
     public Iterable<Application> getApplications() {
         Iterable<Application> returnedApplications = applicationRepository.findAll();
         if (!returnedApplications.iterator().hasNext()) {
-            throw new ValidationException("No records found");
+            throw new ValidationException("No records found.");
         }
         return applicationRepository.findAll();
     }

@@ -1,5 +1,6 @@
 package info.hayslip.AlertHoarder.controllers;
 
+import com.azure.data.cosmos.NotFoundException;
 import info.hayslip.AlertHoarder.models.StatusMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -16,6 +17,13 @@ public class ControllerExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ValidationException.class)
     StatusMessage exceptionHandler(ValidationException e) {
+        return new StatusMessage("400", e.getMessage());
+    }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(NotFoundException.class)
+    StatusMessage exceptionHandler(NotFoundException e) {
         return new StatusMessage("400", e.getMessage());
     }
 }

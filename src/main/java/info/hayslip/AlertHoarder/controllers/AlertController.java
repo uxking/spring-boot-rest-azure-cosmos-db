@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import javax.validation.ValidationException;
 import java.util.stream.StreamSupport;
 
-
 @RestController
 @RequestMapping("/api/v1/alerts")
 public class AlertController {
